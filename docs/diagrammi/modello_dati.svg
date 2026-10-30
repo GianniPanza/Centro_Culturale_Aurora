@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" font-family="Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">Modello dei dati (diagramma entità-relazioni)</title>
+  <desc id="d">Cinque tabelle: services, events, users, bookings, feedback. Un servizio ha molti eventi; un evento ha molte prenotazioni e molti feedback; un utente ha molte prenotazioni e molti feedback.</desc>
+  <rect width="960" height="600" fill="#ffffff"/>
+
+  <!-- Relazioni -->
+  <g fill="none" stroke="#a9573c" stroke-width="2">
+    <line x1="290" y1="145" x2="355" y2="145"/>
+    <line x1="480" y1="250" x2="480" y2="340"/>
+    <polyline points="605,145 795,145 795,340"/>
+    <line x1="290" y1="400" x2="355" y2="400"/>
+    <polyline points="165,462 165,562 795,562 795,528"/>
+  </g>
+  <g font-size="14" font-weight="bold" fill="#a9573c">
+    <text x="296" y="138">1</text><text x="338" y="138">N</text>
+    <text x="488" y="268">1</text><text x="488" y="334">N</text>
+    <text x="612" y="138">1</text><text x="803" y="334">N</text>
+    <text x="296" y="393">1</text><text x="338" y="393">N</text>
+    <text x="173" y="480">1</text><text x="803" y="548">N</text>
+  </g>
+  <g font-size="12" fill="#5d6861" font-style="italic">
+    <text x="322" y="165" text-anchor="middle">propone</text>
+    <text x="490" y="300">riceve</text>
+    <text x="700" y="138" text-anchor="middle">raccoglie</text>
+    <text x="322" y="420" text-anchor="middle">effettua</text>
+    <text x="480" y="582" text-anchor="middle">invia</text>
+  </g>
+
+  <!-- services -->
+  <rect x="40" y="40" width="250" height="210" rx="5" fill="#ffffff" stroke="#214b3e" stroke-width="2"/>
+  <rect x="40" y="40" width="250" height="34" rx="5" fill="#214b3e"/>
+  <text x="165" y="63" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">services · servizi culturali</text>
+  <g font-size="13" fill="#1e2925">
+    <text x="52" y="94"><tspan font-weight="bold" fill="#a9573c">PK</tspan>  id</text>
+    <text x="52" y="116">title · titolo</text>
+    <text x="52" y="138">category · categoria</text>
+    <text x="52" y="160">description · descrizione</text>
+    <text x="52" y="182">duration_minutes · durata (15–480)</text>
+    <text x="52" y="204">audience · destinatari</text>
+    <text x="52" y="226">status · Attivo / Sospeso</text>
+    <text x="52" y="244" fill="#5d6861">created_at</text>
+  </g>
+
+  <!-- events -->
+  <rect x="355" y="40" width="250" height="210" rx="5" fill="#ffffff" stroke="#214b3e" stroke-width="2"/>
+  <rect x="355" y="40" width="250" height="34" rx="5" fill="#214b3e"/>
+  <text x="480" y="63" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">events · eventi</text>
+  <g font-size="13" fill="#1e2925">
+    <text x="367" y="94"><tspan font-weight="bold" fill="#a9573c">PK</tspan>  id</text>
+    <text x="367" y="116"><tspan font-weight="bold" fill="#a9573c">FK</tspan>  service_id → services</text>
+    <text x="367" y="138">title · titolo</text>
+    <text x="367" y="160">description · descrizione</text>
+    <text x="367" y="182">starts_at · data e ora</text>
+    <text x="367" y="204">venue · luogo</text>
+    <text x="367" y="226">capacity · capienza (1–1000)</text>
+    <text x="367" y="244" fill="#5d6861">created_at</text>
+  </g>
+
+  <!-- users -->
+  <rect x="40" y="340" width="250" height="122" rx="5" fill="#ffffff" stroke="#214b3e" stroke-width="2"/>
+  <rect x="40" y="340" width="250" height="34" rx="5" fill="#214b3e"/>
+  <text x="165" y="363" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">users · partecipanti</text>
+  <g font-size="13" fill="#1e2925">
+    <text x="52" y="394"><tspan font-weight="bold" fill="#a9573c">PK</tspan>  id</text>
+    <text x="52" y="416">name · nome</text>
+    <text x="52" y="438">email · <tspan font-weight="bold">univoca</tspan></text>
+    <text x="52" y="456" fill="#5d6861">created_at</text>
+  </g>
+
+  <!-- bookings -->
+  <rect x="355" y="340" width="250" height="166" rx="5" fill="#ffffff" stroke="#214b3e" stroke-width="2"/>
+  <rect x="355" y="340" width="250" height="34" rx="5" fill="#214b3e"/>
+  <text x="480" y="363" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">bookings · prenotazioni</text>
+  <g font-size="13" fill="#1e2925">
+    <text x="367" y="394"><tspan font-weight="bold" fill="#a9573c">PK</tspan>  id</text>
+    <text x="367" y="416"><tspan font-weight="bold" fill="#a9573c">FK</tspan>  event_id → events</text>
+    <text x="367" y="438"><tspan font-weight="bold" fill="#a9573c">FK</tspan>  user_id → users</text>
+    <text x="367" y="460">seats · posti (1–20)</text>
+    <text x="367" y="480" fill="#5d6861">created_at</text>
+    <text x="367" y="499" font-size="12" font-style="italic">una sola per utente ed evento</text>
+  </g>
+
+  <!-- feedback -->
+  <rect x="670" y="340" width="250" height="188" rx="5" fill="#ffffff" stroke="#214b3e" stroke-width="2"/>
+  <rect x="670" y="340" width="250" height="34" rx="5" fill="#214b3e"/>
+  <text x="795" y="363" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">feedback · valutazioni</text>
+  <g font-size="13" fill="#1e2925">
+    <text x="682" y="394"><tspan font-weight="bold" fill="#a9573c">PK</tspan>  id</text>
+    <text x="682" y="416"><tspan font-weight="bold" fill="#a9573c">FK</tspan>  event_id → events</text>
+    <text x="682" y="438"><tspan font-weight="bold" fill="#a9573c">FK</tspan>  user_id → users</text>
+    <text x="682" y="460">rating · voto (1–5)</text>
+    <text x="682" y="482">comment · commento</text>
+    <text x="682" y="502" fill="#5d6861">created_at</text>
+    <text x="682" y="521" font-size="12" font-style="italic">uno solo per utente ed evento</text>
+  </g>
+
+  <g font-size="12" fill="#5d6861">
+    <text x="670" y="60"><tspan font-weight="bold" fill="#a9573c">PK</tspan> chiave primaria</text>
+    <text x="670" y="80"><tspan font-weight="bold" fill="#a9573c">FK</tspan> chiave esterna</text>
+    <text x="670" y="100"><tspan font-weight="bold" fill="#a9573c">1 — N</tspan> uno a molti</text>
+  </g>
+</svg>

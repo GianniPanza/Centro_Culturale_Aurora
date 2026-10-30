@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Piattaforma dimostrativa del Centro Culturale Aurora per servizi, eventi, prenotazioni e feedback.">
+  <meta name="theme-color" content="#153b32">
+  <title>Centro Culturale Aurora — Cultura da vivere</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body data-role="visitatore">
+  <p id="offline-banner" class="offline-banner" role="alert" hidden><strong>Il prototipo è spento o questa pagina è stata aperta come semplice file.</strong> Fai doppio clic su «Avvia Aurora» nella cartella del progetto e usa la pagina che si apre da sola, all'indirizzo http://127.0.0.1:5050. Se eri già lì, questa pagina si riattiva entro pochi secondi.</p>
+  <header class="topbar">
+    <a class="brand" href="#inizio" aria-label="Centro Culturale Aurora, pagina iniziale">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <span class="brand-name"><strong>AURORA</strong><small>CENTRO CULTURALE</small></span>
+    </a>
+    <nav aria-label="Navigazione principale">
+      <a href="#servizi">Servizi</a>
+      <a href="#eventi">Eventi</a>
+      <a class="operator-only" href="#partecipanti">Partecipanti</a>
+      <a class="operator-only" href="#indicatori">Indicatori</a>
+    </nav>
+    <div class="role-switch" role="group" aria-label="Scegli la vista dimostrativa">
+      <span class="role-caption">Vista</span>
+      <button type="button" data-role-choice="visitatore" aria-pressed="true">Visitatore</button>
+      <button type="button" data-role-choice="operatore" aria-pressed="false">Operatore</button>
+    </div>
+  </header>
+
+  <p class="operator-banner operator-only" role="note"><strong>Vista operatore.</strong> Qui il personale del Centro gestisce catalogo, programma, partecipanti e indicatori. È una modalità dimostrativa: il prototipo non prevede account o password.</p>
+
+  <main id="inizio">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">UN LUOGO APERTO ALLA COMUNITÀ</p>
+        <h1>La cultura<br><em>ci incontra.</em></h1>
+        <p class="hero-text">Scopri i servizi del Centro, prenota un posto agli eventi e condividi la tua esperienza. Un progetto digitale per rendere più semplice la partecipazione culturale.</p>
+        <a class="button button-light" href="#eventi">Esplora il programma <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-sun"></div>
+        <div class="art-arch arch-back"></div>
+        <div class="art-arch arch-front"></div>
+        <div class="art-stem stem-one"></div><div class="art-stem stem-two"></div>
+        <div class="art-leaf leaf-one"></div><div class="art-leaf leaf-two"></div>
+        <div class="art-caption"><span>INCONTRI · IDEE · TERRITORIO</span><span>PROTOTIPO</span></div>
+      </div>
+    </section>
+
+    <section class="intro-row" aria-label="Descrizione della piattaforma">
+      <p class="eyebrow">CENTRO CULTURALE AURORA</p>
+      <p>Ente culturale fittizio, creato a scopo didattico. La piattaforma riunisce catalogo dei servizi, programma, prenotazioni, partecipanti, feedback e indicatori in un unico prototipo web.</p>
+    </section>
+
+    <section id="servizi" class="content-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / CATALOGO</p><h2>Servizi culturali</h2></div>
+        <p>Percorsi e attività proposti dal Centro Culturale Aurora.</p>
+      </div>
+      <div id="services-list" class="service-grid" aria-live="polite" aria-busy="true"></div>
+      <details class="management-panel operator-only">
+        <summary>Gestione del catalogo: aggiungi o modifica un servizio</summary>
+        <form id="service-form" class="form-grid" data-create-label="Aggiungi al catalogo">
+          <label>Titolo del servizio<input name="title" required minlength="2" maxlength="120" placeholder="Es. Visite guidate"></label>
+          <label>Categoria<input name="category" required minlength="2" maxlength="60" placeholder="Es. Visite"></label>
+          <label>Durata in minuti<input name="duration_minutes" type="number" min="15" max="480" value="60" required></label>
+          <label>Destinatari<input name="audience" required minlength="2" maxlength="100" placeholder="Es. Pubblico generale"></label>
+          <label>Stato<select name="status"><option>Attivo</option><option>Sospeso</option></select></label>
+          <label class="span-all">Descrizione<textarea name="description" required minlength="10" maxlength="1000" rows="3" placeholder="Descrivi il servizio culturale."></textarea></label>
+          <div class="form-actions span-all">
+            <button class="button button-dark" type="submit">Aggiungi al catalogo</button>
+            <button class="button button-ghost" type="button" data-cancel-edit hidden>Annulla modifica</button>
+          </div>
+        </form>
+      </details>
+    </section>
+
+    <section id="eventi" class="content-section events-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">02 / PARTECIPAZIONE</p><h2>Programma degli eventi</h2></div>
+        <p>Prenota un posto agli eventi in programma e lascia un feedback su quelli conclusi.</p>
+      </div>
+      <div id="events-list" aria-live="polite" aria-busy="true"></div>
+      <details class="management-panel operator-only">
+        <summary>Gestione del programma: pubblica o modifica un evento</summary>
+        <form id="event-form" class="form-grid" data-create-label="Pubblica evento">
+          <label>Servizio culturale<select name="service_id" id="event-service" required></select></label>
+          <label>Titolo dell'evento<input name="title" required minlength="2" maxlength="120"></label>
+          <label>Data e ora<input name="starts_at" type="datetime-local" required></label>
+          <label>Luogo<input name="venue" required minlength="2" maxlength="160" placeholder="Es. Sala degli Incontri"></label>
+          <label>Capienza<input name="capacity" type="number" min="1" max="1000" required></label>
+          <label class="span-all">Descrizione<textarea name="description" required minlength="10" maxlength="1000" rows="3"></textarea></label>
+          <div class="form-actions span-all">
+            <button class="button button-dark" type="submit">Pubblica evento</button>
+            <button class="button button-ghost" type="button" data-cancel-edit hidden>Annulla modifica</button>
+          </div>
+        </form>
+      </details>
+    </section>
+
+    <section id="partecipanti" class="content-section operator-only">
+      <div class="section-heading">
+        <div><p class="eyebrow">03 / UTENTI</p><h2>Anagrafica dei partecipanti</h2></div>
+        <p>Ogni persona è registrata una sola volta tramite l'email e collegata alle sue prenotazioni e ai suoi feedback.</p>
+      </div>
+      <div id="users-list" class="table-wrap" aria-live="polite" aria-busy="true"></div>
+    </section>
+
+    <section id="indicatori" class="content-section dashboard-section operator-only">
+      <div class="section-heading">
+        <div><p class="eyebrow">04 / MONITORAGGIO</p><h2>Attività in sintesi</h2></div>
+        <p>Indicatori aggregati calcolati sulle informazioni registrate nel prototipo.</p>
+      </div>
+      <div id="dashboard-stats" class="stats-grid" aria-live="polite" aria-busy="true"></div>
+      <div class="occupancy-panel">
+        <div class="occupancy-heading"><h3>Disponibilità degli eventi futuri</h3><span>posti prenotati / capienza</span></div>
+        <div id="occupancy-list"></div>
+      </div>
+      <p class="privacy-note">I nominativi demo sono inventati. In questa versione locale non sono previsti account o password.</p>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#inizio"><span class="brand-mark" aria-hidden="true">A</span><span class="brand-name"><strong>AURORA</strong><small>CENTRO CULTURALE</small></span></a>
+    <p>Progetto dimostrativo · Dati di fantasia · Project Work L-31</p>
+    <a href="#inizio">Torna all'inizio ↑</a>
+  </footer>
+  <div id="notice" class="notice" role="status" aria-live="polite"></div>
+  <script>
+    // Aperta come file dal disco, la pagina non può raggiungere il back-end: lo si dice subito.
+    if (!/^https?:$/.test(location.protocol)) document.querySelector("#offline-banner").hidden = false;
+  </script>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

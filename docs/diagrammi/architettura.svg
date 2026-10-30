@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" font-family="Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">Architettura applicativa del prototipo</title>
+  <desc id="d">Tre livelli: browser con interfaccia web, applicazione Flask con API REST e logica, database SQLite. Il browser e Flask comunicano con HTTP e JSON, Flask e SQLite con query SQL.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#214b3e"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#ffffff"/>
+
+  <!-- Livello 1: client -->
+  <rect x="30" y="40" width="230" height="300" rx="6" fill="#f7f6f0" stroke="#214b3e" stroke-width="2"/>
+  <rect x="30" y="40" width="230" height="46" rx="6" fill="#214b3e"/>
+  <text x="145" y="60" text-anchor="middle" font-size="12" fill="#e2c67d" letter-spacing="1.5">LIVELLO 1 · CLIENT</text>
+  <text x="145" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">Browser dell'utente</text>
+  <g font-size="13" fill="#1e2925">
+    <rect x="48" y="106" width="194" height="54" rx="4" fill="#ffffff" stroke="#cfd3ca"/>
+    <text x="60" y="128" font-weight="bold">index.html</text>
+    <text x="60" y="147" fill="#5d6861">struttura della pagina</text>
+    <rect x="48" y="172" width="194" height="54" rx="4" fill="#ffffff" stroke="#cfd3ca"/>
+    <text x="60" y="194" font-weight="bold">styles.css</text>
+    <text x="60" y="213" fill="#5d6861">aspetto e adattamento</text>
+    <rect x="48" y="238" width="194" height="84" rx="4" fill="#ffffff" stroke="#cfd3ca"/>
+    <text x="60" y="260" font-weight="bold">app.js</text>
+    <text x="60" y="279" fill="#5d6861">moduli, vista visitatore</text>
+    <text x="60" y="296" fill="#5d6861">e operatore, chiamate</text>
+    <text x="60" y="313" fill="#5d6861">fetch() verso le API</text>
+  </g>
+
+  <!-- Livello 2: server -->
+  <rect x="365" y="40" width="230" height="300" rx="6" fill="#f7f6f0" stroke="#214b3e" stroke-width="2"/>
+  <rect x="365" y="40" width="230" height="46" rx="6" fill="#214b3e"/>
+  <text x="480" y="60" text-anchor="middle" font-size="12" fill="#e2c67d" letter-spacing="1.5">LIVELLO 2 · SERVER</text>
+  <text x="480" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">Applicazione Flask (Python)</text>
+  <g font-size="13" fill="#1e2925">
+    <rect x="383" y="106" width="194" height="54" rx="4" fill="#ffffff" stroke="#cfd3ca"/>
+    <text x="395" y="128" font-weight="bold">routes.py · API REST</text>
+    <text x="395" y="147" fill="#5d6861">riceve e risponde in JSON</text>
+    <rect x="383" y="172" width="194" height="84" rx="4" fill="#ffffff" stroke="#cfd3ca"/>
+    <text x="395" y="194" font-weight="bold">Logica applicativa</text>
+    <text x="395" y="213" fill="#5d6861">validazione dei dati,</text>
+    <text x="395" y="230" fill="#5d6861">capienza, duplicati,</text>
+    <text x="395" y="247" fill="#5d6861">calcolo degli indicatori</text>
+    <rect x="383" y="268" width="194" height="54" rx="4" fill="#ffffff" stroke="#cfd3ca"/>
+    <text x="395" y="290" font-weight="bold">db.py</text>
+    <text x="395" y="309" fill="#5d6861">connessione e transazioni</text>
+  </g>
+
+  <!-- Livello 3: dati -->
+  <rect x="700" y="40" width="230" height="300" rx="6" fill="#f7f6f0" stroke="#214b3e" stroke-width="2"/>
+  <rect x="700" y="40" width="230" height="46" rx="6" fill="#214b3e"/>
+  <text x="815" y="60" text-anchor="middle" font-size="12" fill="#e2c67d" letter-spacing="1.5">LIVELLO 3 · DATI</text>
+  <text x="815" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">Database SQLite</text>
+  <g font-size="13" fill="#1e2925">
+    <rect x="718" y="106" width="194" height="54" rx="4" fill="#ffffff" stroke="#cfd3ca"/>
+    <text x="730" y="128" font-weight="bold">schema.sql</text>
+    <text x="730" y="147" fill="#5d6861">tabelle, chiavi e vincoli</text>
+    <rect x="718" y="172" width="194" height="84" rx="4" fill="#ffffff" stroke="#cfd3ca"/>
+    <text x="730" y="194" font-weight="bold">5 tabelle collegate</text>
+    <text x="730" y="213" fill="#5d6861">services, events, users,</text>
+    <text x="730" y="230" fill="#5d6861">bookings, feedback</text>
+    <rect x="718" y="268" width="194" height="54" rx="4" fill="#ffffff" stroke="#cfd3ca"/>
+    <text x="730" y="290" font-weight="bold">File .sqlite3</text>
+    <text x="730" y="309" fill="#5d6861">dati salvati su disco</text>
+  </g>
+
+  <!-- Comunicazione client-server -->
+  <g font-size="12" fill="#1e2925" text-anchor="middle">
+    <line x1="264" y1="150" x2="361" y2="150" stroke="#214b3e" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="312" y="124">richiesta HTTP</text>
+    <text x="312" y="140">con JSON</text>
+    <line x1="361" y1="240" x2="264" y2="240" stroke="#214b3e" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+    <text x="312" y="260">risposta JSON</text>
+    <text x="312" y="276">+ codice HTTP</text>
+
+    <line x1="599" y1="150" x2="696" y2="150" stroke="#214b3e" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="647" y="124">query SQL</text>
+    <text x="647" y="140">con parametri</text>
+    <line x1="696" y1="240" x2="599" y2="240" stroke="#214b3e" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+    <text x="647" y="260">righe lette</text>
+    <text x="647" y="276">o esito</text>
+  </g>
+
+  <!-- Corrispondenza con le funzioni di un sistema di elaborazione -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="30" y="372" width="230" height="40" rx="20" fill="#e5eee7"/>
+    <text x="145" y="397" fill="#153b32" font-weight="bold">Ingresso e uscita (I/O)</text>
+    <rect x="272" y="372" width="81" height="40" rx="20" fill="#f5e7c4"/>
+    <text x="312" y="397" fill="#5a3d1c" font-weight="bold" font-size="11">Comunic.</text>
+    <rect x="365" y="372" width="230" height="40" rx="20" fill="#e5eee7"/>
+    <text x="480" y="397" fill="#153b32" font-weight="bold">Elaborazione</text>
+    <rect x="607" y="372" width="81" height="40" rx="20" fill="#f5e7c4"/>
+    <text x="647" y="397" fill="#5a3d1c" font-weight="bold" font-size="11">Comunic.</text>
+    <rect x="700" y="372" width="230" height="40" rx="20" fill="#e5eee7"/>
+    <text x="815" y="397" fill="#153b32" font-weight="bold">Memorizzazione</text>
+  </g>
+  <text x="480" y="452" text-anchor="middle" font-size="13" fill="#5d6861">Nel prototipo i tre livelli girano sullo stesso computer (127.0.0.1); la separazione logica resta la stessa</text>
+  <text x="480" y="472" text-anchor="middle" font-size="13" fill="#5d6861">di un sistema distribuito, dove client, server e database possono trovarsi su macchine diverse.</text>
+</svg>

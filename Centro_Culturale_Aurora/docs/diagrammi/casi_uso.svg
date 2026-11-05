@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 650" font-family="Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">Diagramma UML dei casi d'uso</title>
+  <desc id="d">Due attori. Il visitatore consulta catalogo e programma, prenota posti, invia e legge feedback. L'operatore consulta il programma e gestisce catalogo, eventi, prenotazioni, anagrafica utenti e indicatori.</desc>
+  <rect width="960" height="650" fill="#ffffff"/>
+
+  <!-- Confine del sistema -->
+  <rect x="270" y="24" width="420" height="606" rx="6" fill="#f7f6f0" stroke="#214b3e" stroke-width="2"/>
+  <text x="480" y="48" text-anchor="middle" font-size="14" font-weight="bold" fill="#214b3e">Piattaforma del Centro Culturale Aurora</text>
+
+  <!-- Collegamenti attore-caso d'uso -->
+  <g stroke="#5d6861" stroke-width="1.5">
+    <line x1="140" y1="235" x2="325" y2="92"/>
+    <line x1="140" y1="240" x2="325" y2="154"/>
+    <line x1="140" y1="245" x2="325" y2="216"/>
+    <line x1="140" y1="250" x2="325" y2="278"/>
+    <line x1="820" y1="395" x2="635" y2="92"/>
+    <line x1="820" y1="400" x2="635" y2="278"/>
+    <line x1="820" y1="405" x2="635" y2="340"/>
+    <line x1="820" y1="410" x2="635" y2="402"/>
+    <line x1="820" y1="415" x2="635" y2="464"/>
+    <line x1="820" y1="420" x2="635" y2="526"/>
+    <line x1="820" y1="425" x2="635" y2="588"/>
+  </g>
+
+  <!-- Casi d'uso -->
+  <g fill="#ffffff" stroke="#214b3e" stroke-width="1.8">
+    <ellipse cx="480" cy="92" rx="155" ry="24"/>
+    <ellipse cx="480" cy="154" rx="155" ry="24"/>
+    <ellipse cx="480" cy="216" rx="155" ry="24"/>
+    <ellipse cx="480" cy="278" rx="155" ry="24"/>
+    <ellipse cx="480" cy="340" rx="155" ry="24"/>
+    <ellipse cx="480" cy="402" rx="155" ry="24"/>
+    <ellipse cx="480" cy="464" rx="155" ry="24"/>
+    <ellipse cx="480" cy="526" rx="155" ry="24"/>
+    <ellipse cx="480" cy="588" rx="155" ry="24"/>
+  </g>
+  <g font-size="13" fill="#1e2925" text-anchor="middle">
+    <text x="480" y="97">Consultare catalogo e programma</text>
+    <text x="480" y="159">Prenotare posti a un evento</text>
+    <text x="480" y="221">Inviare un feedback dopo l'evento</text>
+    <text x="480" y="283">Leggere i feedback ricevuti</text>
+    <text x="480" y="345">Gestire il catalogo dei servizi</text>
+    <text x="480" y="407">Programmare e modificare gli eventi</text>
+    <text x="480" y="469">Consultare e annullare prenotazioni</text>
+    <text x="480" y="531">Consultare l'anagrafica dei partecipanti</text>
+    <text x="480" y="593">Monitorare gli indicatori di attività</text>
+  </g>
+
+  <!-- Attore: visitatore -->
+  <g stroke="#214b3e" stroke-width="2.2" fill="none">
+    <circle cx="110" cy="196" r="14" fill="#ffffff"/>
+    <line x1="110" y1="210" x2="110" y2="258"/>
+    <line x1="84" y1="228" x2="136" y2="228"/>
+    <line x1="110" y1="258" x2="88" y2="296"/>
+    <line x1="110" y1="258" x2="132" y2="296"/>
+  </g>
+  <text x="110" y="320" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e2925">Visitatore</text>
+  <text x="110" y="338" text-anchor="middle" font-size="12" fill="#5d6861">o partecipante</text>
+
+  <!-- Attore: operatore -->
+  <g stroke="#214b3e" stroke-width="2.2" fill="none">
+    <circle cx="850" cy="356" r="14" fill="#ffffff"/>
+    <line x1="850" y1="370" x2="850" y2="418"/>
+    <line x1="824" y1="388" x2="876" y2="388"/>
+    <line x1="850" y1="418" x2="828" y2="456"/>
+    <line x1="850" y1="418" x2="872" y2="456"/>
+  </g>
+  <text x="850" y="480" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e2925">Operatore</text>
+  <text x="850" y="498" text-anchor="middle" font-size="12" fill="#5d6861">del Centro</text>
+</svg>
